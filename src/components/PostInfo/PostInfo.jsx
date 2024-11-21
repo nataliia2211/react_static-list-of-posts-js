@@ -3,21 +3,23 @@ import { UserInfo } from '../UserInfo/UserInfo';
 import { CommentList } from '../CommentList/CommentList';
 
 export const PostInfo = ({ post }) => {
+  const { title, user, body, comments } = post;
+
   return (
     <div className="PostInfo">
       <div className="PostInfo__header">
-        <h3 className="PostInfo__title">{post.title}</h3>
+        <h3 className="PostInfo__title">{title}</h3>
 
         <p>
           {' Posted by  '}
 
-          {post.user && <UserInfo user={post.user} />}
+          {post.user && <UserInfo user={user} />}
         </p>
       </div>
 
-      <p className="PostInfo__body">{post.body}</p>
-      {post.comments && post.comments.length > 0 ? (
-        <CommentList comments={post.comments} />
+      <p className="PostInfo__body">{body}</p>
+      {comments && comments.length > 0 ? (
+        <CommentList comments={comments} />
       ) : (
         <>
           <hr />
